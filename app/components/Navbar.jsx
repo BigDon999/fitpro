@@ -191,13 +191,34 @@ export default function Navbar() {
             border: "1px solid rgba(255, 255, 255, 0.2)", // Added subtle border
           }}
         >
-          <Link href="/" style={pathname === "/" ? { ...dropdownLinkStyle, background: "#2E1065", color: "#fff" } : dropdownLinkStyle}>
+          <Link
+            href="/"
+            style={
+              pathname === "/"
+                ? { ...dropdownLinkStyle, background: "#2E1065", color: "#fff" }
+                : dropdownLinkStyle
+            }
+          >
             Home
           </Link>
-          <Link href="/Features" style={pathname === "/Features" ? { ...dropdownLinkStyle, background: "#2E1065", color: "#fff" } : dropdownLinkStyle}>
+          <Link
+            href="/Features"
+            style={
+              pathname === "/Features"
+                ? { ...dropdownLinkStyle, background: "#2E1065", color: "#fff" }
+                : dropdownLinkStyle
+            }
+          >
             Features
           </Link>
-          <Link href="/Community" style={pathname === "/Community" ? { ...dropdownLinkStyle, background: "#2E1065", color: "#fff" } : dropdownLinkStyle}>
+          <Link
+            href="/Community"
+            style={
+              pathname === "/Community"
+                ? { ...dropdownLinkStyle, background: "#2E1065", color: "#fff" }
+                : dropdownLinkStyle
+            }
+          >
             Community
           </Link>
           <Link href="/Contact" passHref>
