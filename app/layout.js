@@ -24,9 +24,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar/>
-        {children}
-        <Footer/>
+        <div className="slide-in-bottom">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

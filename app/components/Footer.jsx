@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#000000] text-white py-12">
+    <footer className="bg-[#000000] text-white py-12 slide-in-bottom">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left Section */}
@@ -47,7 +47,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/pricing"
                     className="text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     PRICING
@@ -69,7 +69,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/support"
                     className="text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     SUPPORT
@@ -77,7 +77,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/FAQ"
                     className="text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     FAQ
@@ -91,7 +91,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="#"
+                    href="/about"
                     className="text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     ABOUT US
@@ -99,7 +99,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/careers"
                     className="text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     CAREERS

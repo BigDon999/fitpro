@@ -1,6 +1,5 @@
-
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +8,15 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,8 +26,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     // Form submission logic would go here
     console.log('Form submitted:', formData);
     alert('Thank you for your message! We will get back to you soon.');
@@ -30,7 +37,9 @@ const Contact = () => {
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className={`text-center mb-12 transition-all duration-1000 transform ${
+          isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'
+        }`}>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 mt-15">
             Contact Us
           </h1>
@@ -41,7 +50,9 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Information */}
-          <div className="bg-white rounded-xl shadow-md p-6">
+          <div className={`bg-white rounded-xl shadow-md p-6 transition-all duration-1000 transform ${
+            isVisible ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'
+          }`} style={{ transitionDelay: '200ms' }}>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h2>
             
             <div className="space-y-6">
@@ -85,11 +96,15 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-xl shadow-md p-6">
+          <div className={`bg-white rounded-xl shadow-md p-6 transition-all duration-1000 transform ${
+            isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'
+          }`} style={{ transitionDelay: '400ms' }}>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Send a Message</h2>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
+            <div className="space-y-4">
+              <div className={`transition-all duration-700 transform ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`} style={{ transitionDelay: '600ms' }}>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Full Name
                 </label>
@@ -105,7 +120,9 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div className={`transition-all duration-700 transform ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`} style={{ transitionDelay: '700ms' }}>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address
                 </label>
@@ -121,7 +138,9 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div className={`transition-all duration-700 transform ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`} style={{ transitionDelay: '800ms' }}>
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                   Subject
                 </label>
@@ -137,7 +156,9 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div className={`transition-all duration-700 transform ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`} style={{ transitionDelay: '900ms' }}>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                   Message
                 </label>
@@ -153,13 +174,17 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300"
-              >
-                Send Message
-              </button>
-            </form>
+              <div className={`transition-all duration-700 transform ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`} style={{ transitionDelay: '1000ms' }}>
+                <div
+                  onClick={handleSubmit}
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300 cursor-pointer text-center"
+                >
+                  Send Message
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

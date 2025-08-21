@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 import Image from "next/image";
 import Hero from "./components/Hero";
 import React, { useState, useEffect } from "react";
@@ -8,12 +7,6 @@ import Unleach from "./components/Unleach";
 import Testimonials from "./components/Testimonials";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
       <style jsx>{`
@@ -40,19 +33,12 @@ export default function Home() {
           }
         }
       `}</style>
-      {loading ? (
-        <div className="loader">
-          <div className="spinner"></div>
-        </div>
-      ) : (
-        <>
-          <Hero />
-          <Empower />
-          <Unleach />
-          <Testimonials />
-        
-        </>
-      )}
+      <div className="slide-in-bottom">
+        <Hero />
+        <Empower />
+        <Unleach />
+        <Testimonials />
+      </div>
     </>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,11 +59,12 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 slide-in-bottom">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 text-center">
         <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2 leading-tight">
-          EMPOWERING YOUR FITNESS <br/>JOURNEY
+          EMPOWERING YOUR FITNESS <br />
+          JOURNEY
         </h1>
         <h2 className="text-base xs:text-lg sm:text-4xl md:text-5xl font-semibold text-gray-500 mb-3 sm:mb-4">
           COMMUNITY & SUCCESS STORIES
@@ -120,29 +122,35 @@ const Testimonial = () => {
           {/* Text Content */}
           <div className="text-center md:text-left">
             <h3 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-[#A78BFA] mb-3 sm:mb-4 leading-tight">
-              Unleash Your Potential: <br className="hidden sm:inline" />Transform Your Fitness <br className="hidden sm:inline" />Journey Today!
+              Unleash Your Potential: <br className="hidden sm:inline" />
+              Transform Your Fitness <br className="hidden sm:inline" />
+              Journey Today!
             </h3>
             <p className="text-gray-600 text-sm sm:text-base mb-5 sm:mb-6 px-2">
               Join our growing community of fitness professionals and clients
               achieving remarkable results together.
             </p>
             <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-              <button className="bg-[#2E1065] hover:bg-purple-800 text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base">
-                <img
-                  src="/Assets/heroicon1.png"
-                  alt="arrow"
-                  className="w-4 h-4"
-                />
-                <span>Get Started</span>
-              </button>
-              <button className="border-2 border-[#000000] text-purple-700 hover:bg-[#A78BFA] hover:text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base">
-                <img
-                  src="/Assets/heroicon2.png"
-                  alt="info"
-                  className="w-4 h-4"
-                />
-                <span>Learn More</span>
-              </button>
+              <Link href="/pricing" passHref legacyBehavior>
+                <button className="bg-[#2E1065] hover:bg-purple-800 text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base">
+                  <img
+                    src="/Assets/heroicon1.png"
+                    alt="arrow"
+                    className="w-4 h-4"
+                  />
+                  <span>Get Started</span>
+                </button>
+              </Link>
+              <Link href="/about" passHref legacyBehavior>
+                <button className="border-2 border-[#000000] text-purple-700 hover:bg-[#A78BFA] hover:text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base">
+                  <img
+                    src="/Assets/heroicon2.png"
+                    alt="info"
+                    className="w-4 h-4"
+                  />
+                  <span>Learn More</span>
+                </button>
+              </Link>
             </div>
           </div>
 
