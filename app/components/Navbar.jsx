@@ -84,8 +84,24 @@ export default function Navbar() {
       }}
     >
       {/* Logo */}
-      <div style={{ fontSize: "29px", fontWeight: "bold", color: "#A78BFA" }}>
-        FitPro
+      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <Image
+          src="/Assets/Artboard 2.png"
+          alt="FitPro Logo"
+          width={36}
+          height={36}
+          style={{ borderRadius: "8px" }}
+        />
+        <span
+          style={{
+            fontSize: "29px",
+            fontWeight: "bold",
+            color: "#A78BFA",
+            fontFamily: "BricolageGrotesque, Arial, Helvetica, sans-serif",
+          }}
+        >
+          FitPro
+        </span>
       </div>
 
       {/* Desktop Navlinks - now centered */}
