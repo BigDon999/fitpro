@@ -4,11 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
-  
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
-      <section className="hero-section">
+      <section className={`hero-section ${isVisible ? 'slide-in-from-below' : ''}`}>
         <h1 className="main-header slide-in-left">
           Transform your fitness <br />
           <span className="highlight-text slide-in-right">
@@ -34,38 +42,40 @@ export default function Hero() {
               Join a thriving community <br /> of fitness pros
             </h2>
             <div className="user-images-container slide-in-right">
-              <Image
-                src="/Assets/community1.png"
-                alt="user1"
-                width={35}
-                height={35}
-                className="user-image"
-                priority
-              />
-              <Image
-                src="/Assets/community2.png"
-                alt="user2"
-                width={35}
-                height={35}
-                className="user-image"
-                priority
-              />
-              <Image
-                src="/Assets/community1.png"
-                alt="user3"
-                width={35}
-                height={35}
-                className="user-image"
-                priority
-              />
-              <Image
-                src="/Assets/community2.png"
-                alt="user4"
-                width={35}
-                height={35}
-                className="user-image"
-                priority
-              />
+              <div className="flex -space-x-4">
+                <Image
+                  src="/Assets/community1.png"
+                  alt="user1"
+                  width={35}
+                  height={35}
+                  className="user-image"
+                  priority
+                />
+                <Image
+                  src="/Assets/community2.png"
+                  alt="user2"
+                  width={35}
+                  height={35}
+                  className="user-image"
+                  priority
+                />
+                <Image
+                  src="/Assets/community1.png"
+                  alt="user3"
+                  width={35}
+                  height={35}
+                  className="user-image"
+                  priority
+                />
+                <Image
+                  src="/Assets/community2.png"
+                  alt="user4"
+                  width={35}
+                  height={35}
+                  className="user-image"
+                  priority
+                />
+              </div>
             </div>
           </div>
           <p className="subtext slide-in-bottom">
@@ -113,6 +123,13 @@ export default function Hero() {
           align-items: center;
           padding: 40px 20px;
           text-align: center;
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .hero-section.slide-in-from-below {
+          opacity: 1;
+          transform: translateY(0);
         }
         .main-header {
           font-size: 40px;
@@ -155,7 +172,6 @@ export default function Hero() {
         }
         .user-images-container {
           display: flex;
-          gap: 0;
           position: relative;
         }
         .user-image {
@@ -163,14 +179,8 @@ export default function Hero() {
           height: 35px;
           border-radius: 50%;
           object-fit: cover;
-          margin-left: -18px;
-          box-shadow: 0 0 0 2px #fff;
+          border: 2px solid #fff;
           position: relative;
-          z-index: 2;
-        }
-        .user-image:first-child {
-          margin-left: 0;
-          z-index: 2;
         }
         .subtext {
           max-width: 600px;
