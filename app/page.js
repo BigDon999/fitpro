@@ -1,44 +1,44 @@
 "use client";
-import Image from "next/image";
 import Hero from "./components/Hero";
-import React, { useState, useEffect } from "react";
 import Empower from "./components/Empower";
 import Unleach from "./components/Unleach";
 import Testimonials from "./components/Testimonials";
+import { useScrollAnimation } from "./hooks/useScrollAnimation";
+
+/**
+ * Wraps a section so it fades in when scrolled into view.
+ * direction: "up" | "down" | "left" | "right" | "zoom"
+ */
+function ScrollSection({ children, direction = "up", delay = 0, className = "" }) {
+  const [ref, visible] = useScrollAnimation(0.12);
+  const delayClass = delay ? `reveal-delay-${delay}` : "";
+  return (
+    <div
+      ref={ref}
+      className={`reveal reveal-${direction} ${delayClass} ${visible ? "visible" : ""} ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
     <>
-      <style jsx>{`
-        .loader {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 100vh;
-        }
-        .spinner {
-          border: 6px solid #f3f3f3;
-          border-top: 6px solid #a78bfa;
-          border-radius: 50%;
-          width: 60px;
-          height: 60px;
-          animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
-      <div className="slide-in-bottom">
-        <Hero />
+      {/* Hero has its own entrance animation — no extra wrapper needed */}
+      <Hero />
+
+      <ScrollSection direction="up">
         <Empower />
+      </ScrollSection>
+
+      <ScrollSection direction="up" delay={1}>
         <Unleach />
+      </ScrollSection>
+
+      <ScrollSection direction="zoom" delay={1}>
         <Testimonials />
-      </div>
+      </ScrollSection>
     </>
   );
 }

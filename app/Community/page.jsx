@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Community() {
   const [visibleSections, setVisibleSections] = useState(new Set());
@@ -130,26 +131,9 @@ export default function Community() {
                   data-section="hero-avatars"
                 >
                   <div className="flex -space-x-4">
-                    <img
-                      src="/Assets/community1.png"
-                      alt="User 1"
-                      className="w-14 h-14 rounded-full border-2 border-white object-cover"
-                    />
-                    <img
-                      src="/Assets/community2.png"
-                      alt="User 2"
-                      className="w-14 h-14 rounded-full border-2 border-white object-cover"
-                    />
-                    <img
-                      src="/Assets/community1.png"
-                      alt="User 3"
-                      className="w-14 h-14 rounded-full border-2 border-white object-cover"
-                    />
-                    <img
-                      src="/Assets/community2.png"
-                      alt="User 4"
-                      className="w-14 h-14 rounded-full border-2 border-white object-cover"
-                    />
+                    {["/Assets/community1.png","/Assets/community2.png","/Assets/community1.png","/Assets/community2.png"].map((src,i)=>(
+                      <Image key={i} src={src} alt={`Community member ${i+1}`} width={56} height={56} className="rounded-full border-2 border-white object-cover" />
+                    ))}
                   </div>
                 </div>
 
@@ -161,29 +145,15 @@ export default function Community() {
                   )}`}
                   data-section="hero-buttons"
                 >
-                  <Link href="/pricing" passHref legacyBehavior>
-                    <button className="bg-[#2E1065] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#1e0a4a] transition-all duration-300 transform hover:scale-105 shadow-lg">
-                      <span>Join Now</span>
-                    </button>
+                  <Link href="/pricing" className="bg-[#2E1065] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#1e0a4a] transition-all duration-300 hover:scale-105 shadow-lg inline-block text-center">
+                    Join Now
                   </Link>
-                  <Link href="/about" passHref legacyBehavior>
-                    <button className="border-2 border-[#2E1065] text-[#2E1065] px-8 py-3 rounded-lg font-medium hover:bg-[#2E1065] hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                      </svg>
-                      <span>Learn More</span>
-                    </button>
+                  <Link href="/about" className="border-2 border-[#2E1065] text-[#2E1065] px-8 py-3 rounded-lg font-medium hover:bg-[#2E1065] hover:text-white transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Learn More</span>
                   </Link>
                 </div>
               </section>
@@ -191,7 +161,6 @@ export default function Community() {
           </div>
         </div>
       </div>
-
       {/* Community Spotlight Section */}
       <section
         className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 ${getAnimationClass(
@@ -253,11 +222,7 @@ export default function Community() {
                 </div>
               </div>
               <div className="md:w-1/2">
-                <img
-                  src="/Assets/article1.png"
-                  alt="Fitness trainer lifting weights"
-                  className="w-full h-auto rounded-xl shadow-lg"
-                />
+                <Image src="/Assets/article1.png" alt="Fitness trainer lifting weights" width={600} height={400} className="w-full h-auto rounded-xl shadow-lg" />
               </div>
             </div>
           </article>
@@ -292,11 +257,7 @@ export default function Community() {
                 </div>
               </div>
               <div className="md:w-1/2">
-                <img
-                  src="/Assets/article2.png"
-                  alt="Group of fitness enthusiasts"
-                  className="w-full h-auto rounded-xl shadow-lg"
-                />
+                <Image src="/Assets/article2.png" alt="Group of fitness enthusiasts" width={600} height={400} className="w-full h-auto rounded-xl shadow-lg" />
               </div>
             </div>
           </article>
@@ -331,17 +292,12 @@ export default function Community() {
                 </div>
               </div>
               <div className="md:w-1/2">
-                <img
-                  src="/Assets/article3.png"
-                  alt="Fresh fruits and vegetables"
-                  className="w-full h-auto rounded-xl shadow-lg"
-                />
+                <Image src="/Assets/article3.png" alt="Fresh fruits and vegetables" width={600} height={400} className="w-full h-auto rounded-xl shadow-lg" />
               </div>
             </div>
           </article>
         </div>
       </section>
-
       {/* Success Stories Section - New Section */}
       <section
         className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 ${getAnimationClass(
@@ -357,11 +313,7 @@ export default function Community() {
           )}`}
           data-section="success-header"
         >
-          <img
-            src="/Assets/empowericon.png"
-            alt="Community Logo"
-            className="w-16 h-16 mx-auto mb-6 rounded-lg"
-          />
+          <Image src="/Assets/empowericon.png" alt="Community Logo" width={64} height={64} className="mx-auto mb-6 rounded-lg" />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             EMPOWERING YOUR FITNESS <br /> JOURNEY
           </h2>
@@ -396,11 +348,7 @@ export default function Community() {
               </div>
 
               <div className="flex items-center">
-                <img
-                  src={story.avatar}
-                  alt={story.name}
-                  className="w-10 h-10 rounded-full mr-4 object-cover"
-                />
+                <Image src={story.avatar} alt={story.name} width={40} height={40} className="rounded-full mr-4 object-cover" />
                 <div>
                   <h4 className="font-semibold text-gray-900">{story.name}</h4>
                   <p className="text-sm text-gray-500">{story.title}</p>

@@ -3,6 +3,7 @@
   src: url("/font/static/BricolageGrotesque-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
+  font-display: swap; /* don't block render */
 }
 
 h1,
@@ -13,6 +14,7 @@ h5,
 h6 {
   font-family: "BricolageGrotesque", Arial, Helvetica, sans-serif;
 }
+
 @import "tailwindcss";
 
 @theme inline {
@@ -22,12 +24,86 @@ h6 {
   --font-mono: var(--font-geist-mono);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Prevent horizontal overflow on mobile */
+  overflow-x: hidden;
 }
 
+/* ── Global image defaults ── */
+/* Only prevent overflow — don't force display:block which breaks flex icon rows */
+img {
+  max-width: 100%;
+}
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Make Next.js <Image> with fill behave correctly */
+[data-nimg="fill"] {
+  object-fit: cover;
+}
+
+/* ── Page padding for fixed navbar ── */
+main,
+.page-content {
+  padding-top: 72px;
+}
+
+/* ══════════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+   Usage: add .reveal + one of the direction classes.
+   JS adds .visible when the element enters viewport.
+   ══════════════════════════════════════════════ */
+
+/* Base state – invisible, ready to animate */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Direction variants */
+.reveal-up      { transform: translateY(48px); }
+.reveal-down    { transform: translateY(-48px); }
+.reveal-left    { transform: translateX(-56px); }
+.reveal-right   { transform: translateX(56px); }
+.reveal-zoom    { transform: scale(0.92); }
+
+/* Visible state – snap to natural position */
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered delays for child elements */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.45s; }
+.reveal-delay-5 { transition-delay: 0.6s; }
+
+/* Respect user motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition: none; opacity: 1; transform: none; }
+}
+
+/* ── Tiny mobile extras ── */
 @media (max-width: 375px) {
   .community-hero-section {
     padding: 10px 5px;

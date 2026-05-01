@@ -1,0 +1,195 @@
+/* ── Navbar wrapper ── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  z-index: 100;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease,
+    border-bottom 0.3s ease;
+}
+
+.navScrolled {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-size: 26px;
+  font-weight: bold;
+  color: #a78bfa;
+  font-family: "BricolageGrotesque", Arial, Helvetica, sans-serif;
+}
+
+/* ── Desktop nav links pill ── */
+.navLinks {
+  display: flex;
+  gap: 8px;
+  background: #a78bfa;
+  padding: 8px 32px;
+  border-radius: 20px;
+}
+
+.navLink {
+  color: #000;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.25s ease, color 0.25s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover,
+.navLinkActive {
+  background: #2e1065;
+  color: #fff;
+}
+
+/* ── Desktop CTA button ── */
+.ctaBtn {
+  background: #a78bfa;
+  color: #000;
+  border: none;
+  padding: 11px 28px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+  white-space: nowrap;
+}
+
+.ctaBtn:hover {
+  background: #2e1065;
+  color: #fff;
+}
+
+/* ── Hamburger toggle ── */
+.menuToggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #a78bfa;
+  border-radius: 3px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animate bars to X when open */
+.menuToggle.open .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menuToggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.menuToggle.open .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ── Mobile dropdown ── */
+.mobileMenu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px 24px;
+  gap: 6px;
+  z-index: 99;
+  /* slide in from top */
+  transform-origin: top;
+  animation: slideDown 0.22s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: scaleY(0.9) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+.mobileLink {
+  color: #111;
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mobileLink:hover,
+.mobileLinkActive {
+  background: #2e1065;
+  color: #fff;
+}
+
+.mobileCta {
+  margin-top: 10px;
+  background: #a78bfa;
+  color: #000;
+  text-decoration: none;
+  padding: 13px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.mobileCta:hover {
+  background: #2e1065;
+  color: #fff;
+}
+
+/* ── Responsive breakpoints ── */
+@media (max-width: 768px) {
+  .nav {
+    padding: 14px 20px;
+  }
+
+  .navLinks,
+  .ctaBtn {
+    display: none;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+}
